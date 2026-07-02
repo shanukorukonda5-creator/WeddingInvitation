@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Srikanth &amp; Kusuma</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --ink:       #0c0e1a;
+  --navy:      #111628;
+  --navy2:     #192038;
+  --pearl:     #faf7f2;
+  --gold:      #c9a84c;
+  --gold-soft: #e2c97e;
+  --gold-dim:  rgba(201,168,76,0.18);
+  --gold-line: rgba(201,168,76,0.35);
+  --white:     #ffffff;
+  --muted:     #8b8070;
+  --text-dim:  rgba(255,255,255,0.55);
+  --haldi: #d8a92d;
+  --wedding-gold: #c9a84c;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Jost', sans-serif; background: var(--pearl); color: var(--ink); overflow-x: hidden; }
+
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: flex-end;
+  text-align: center; overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: url('images/couple.jpg') center 30% / cover no-repeat; z-index: 0;
+}
+/* hide the img tag on desktop — only used on mobile */
+.hero-bg-img { display: none; }
+.hero-bg::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to bottom,rgba(11,13,24,0.08) 0%,rgba(11,13,24,0.25) 40%,rgba(11,13,24,0.84) 78%,rgba(11,13,24,0.98) 100%);
+}
+.hero-body {
+  position: relative; z-index: 2; padding: 0 28px 80px; width: 100%;
+  animation: fadeUp 1.6s cubic-bezier(.22,1,.36,1) both;
+}
+.hero-invite-line { font-size:0.68rem; letter-spacing:5px; text-transform:uppercase; color:rgba(255,255,255,0.45); font-weight:300; margin-bottom:18px; }
+.hero-names { font-family:'Playfair Display',serif; font-size:clamp(4.5rem,13vw,8.5rem); font-weight:400; line-height:0.92; color:var(--white); letter-spacing:-1px; }
+.hero-names .amp { display:block; font-size:0.65em; font-style:italic; color:var(--gold-soft); font-weight:400; line-height:1.3; letter-spacing:0; }
+.hero-rule { width:44px; height:1px; background:var(--gold); margin:26px auto 22px; opacity:0.65; }
+.hero-events { display:flex; justify-content:center; align-items:flex-start; gap:32px; margin-top:10px; }
+.hero-event { text-align:center; min-width:140px; }
+.hero-event-label { font-size:.62rem; letter-spacing:4px; text-transform:uppercase; color:#e2c97e; margin-bottom:8px; font-weight:500; }
+.hero-event-date { font-size:.72rem; color:rgba(255,255,255,.82); letter-spacing:1px; margin-bottom:6px; }
+.hero-event-city { font-size:.68rem; color:rgba(255,255,255,.6); letter-spacing:3px; text-transform:uppercase; }
+.hero-events-divider { width:1px; height:65px; background:linear-gradient(to bottom,transparent,rgba(201,168,76,.9),transparent); }
+.hero-scroll { position:absolute; bottom:22px; left:50%; transform:translateX(-50%); z-index:3; display:flex; flex-direction:column; align-items:center; gap:6px; color:rgba(255,255,255,0.2); font-size:0.58rem; letter-spacing:4px; text-transform:uppercase; animation:bob 2.4s ease-in-out infinite; }
+.hero-scroll-line { width:1px; height:30px; background:linear-gradient(to bottom,var(--gold-line),transparent); }
+</style>
+</head>
+<body>
+
+<style>
+.story-section { background:var(--navy); color:white; text-align:center; padding:100px 28px; }
+.section-eye { font-size:0.6rem; letter-spacing:5px; text-transform:uppercase; color:var(--gold); font-weight:500; display:block; margin-bottom:18px; }
+.section-title { font-family:'Playfair Display',serif; font-size:clamp(2rem,5vw,3rem); font-weight:400; line-height:1.1; color:var(--white); }
+.story-body { max-width:600px; margin:40px auto 0; font-size:1rem; font-weight:300; line-height:2.1; color:rgba(255,255,255,0.62); letter-spacing:0.2px; }
+.story-body em { font-style:normal; font-family:'Playfair Display',serif; font-size:1.08em; color:var(--gold-soft); }
+.story-pullquote { font-family:'Playfair Display',serif; font-size:clamp(1.3rem,3.5vw,1.9rem); font-style:italic; color:rgba(255,255,255,0.8); max-width:560px; margin:52px auto 0; line-height:1.55; position:relative; padding:0 16px; }
+
+.family-section { position:relative; background:var(--ink); overflow:hidden; }
+.family-img-wrap { position:relative; width:100%; }
+.family-img-wrap img { width:100%; height:auto; display:block; filter:brightness(0.70) saturate(0.85); }
+.family-img-wrap::after { content:''; position:absolute; inset:0; background:linear-gradient(to bottom,rgba(12,14,26,0.10) 0%,rgba(12,14,26,0.00) 30%,rgba(12,14,26,0.00) 60%,rgba(12,14,26,0.92) 100%); }
+.family-text { text-align:center; padding:60px 32px 80px; color:white; position:relative; z-index:2; }
+.family-headline { font-family:'Playfair Display',serif; font-size:clamp(1.7rem,4vw,2.4rem); font-weight:400; font-style:italic; color:var(--white); line-height:1.4; max-width:620px; margin:0 auto 22px; }
+.family-body { font-size:0.92rem; font-weight:300; color:rgba(255,255,255,0.58); line-height:1.95; max-width:500px; margin:0 auto; letter-spacing:0.2px; }
+
+.events-section { background:var(--ink); }
+.event-panel { position:relative; height:90vh; min-height:520px; overflow:hidden; display:flex; align-items:flex-end; }
+.event-panel + .event-panel { border-top:1px solid rgba(255,255,255,0.04); }
+.event-panel-img { position:absolute; inset:0; }
+.event-panel-img img { width:100%; height:100%; object-fit:cover; object-position:center top; transition:transform 12s ease; transform:scale(1.04); }
+.event-panel:hover .event-panel-img img { transform:scale(1.10); }
+.event-panel-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(10,12,22,0.97) 0%,rgba(10,12,22,0.55) 40%,rgba(10,12,22,0.08) 100%); }
+.event-panel-content { position:relative; z-index:2; padding:48px 36px; width:100%; max-width:700px; }
+@media (min-width:900px) { .event-panel-content { padding:60px 76px; } }
+.event-panel.wedding .event-panel-content { padding-bottom:56px; }
+.event-name { font-family:'Playfair Display',serif; font-weight:400; color:white; line-height:0.95; letter-spacing:-1px; margin-bottom:14px; font-size:clamp(2.8rem,8vw,5rem); }
+.event-panel.wedding .event-name { font-size:clamp(3.6rem,11vw,7rem); margin-bottom:18px; }
+.event-tagline { font-size:0.9rem; font-weight:400; color:rgba(255,255,255,0.82); line-height:1.7; margin-bottom:24px; max-width:400px; }
+.event-meta-row { display:flex; align-items:center; gap:12px; font-size:0.82rem; letter-spacing:2.5px; text-transform:uppercase; color:rgba(255,255,255,0.95); font-weight:500; margin-bottom:8px; flex-wrap:wrap; }
+.event-panel.wedding .event-meta-row { font-size:0.88rem; color:#ffffff; font-weight:500; margin-bottom:10px; }
+.event-divider { width:1px; height:18px; background:linear-gradient(to bottom,transparent,rgba(201,168,76,.95),transparent); flex-shrink:0; }
+.event-time { color:inherit; font-size:inherit; font-weight:inherit; }
+.event-venue { font-size:0.7rem; letter-spacing:1.5px; color:rgba(255,255,255,0.78); font-weight:300; margin-bottom:28px; line-height:1.5; }
+.event-panel.wedding .event-venue { color:rgba(255,255,255,0.65); font-size:0.75rem; }
+.event-link { display:inline-flex; align-items:center; gap:10px; color:#ffffff; text-decoration:none; font-size:0.72rem; letter-spacing:2px; text-transform:uppercase; font-weight:600; padding:14px 22px; border-radius:999px; background:rgba(255,255,255,.12); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,.25); transition:all .25s ease; }
+.event-link:hover { background:rgba(255,255,255,.22); transform:translateY(-2px); }
+.event-link svg { transition:transform 0.2s; }
+.event-link:hover svg { transform:translateX(4px); }
+.event-accent { width:60px; height:2px; margin-bottom:18px; }
+.event-panel.haldi .event-panel-overlay { background:linear-gradient(to top,rgba(216,169,45,0.92) 0%,rgba(10,12,22,0.70) 35%,rgba(10,12,22,0.15) 100%); }
+.event-panel.haldi .event-accent { background:#d8a92d; }
+.event-panel.wedding .event-panel-overlay { background:linear-gradient(to top,rgba(12,12,12,0.96) 0%,rgba(201,168,76,0.25) 35%,rgba(10,12,22,0.10) 100%); }
+.event-panel.wedding .event-accent { background:#c9a84c; }
+.event-panel.wedding .event-name { color:#ffffff !important; }
+.event-panel-img { transform:translateZ(0); will-change:transform; }
+.timeline-connector { position:absolute; left:50%; bottom:-50px; width:1px; height:100px; background:linear-gradient(to bottom,rgba(201,168,76,.8),transparent); z-index:3; }
+.timeline-dot { position:absolute; left:50%; bottom:40px; transform:translateX(-50%); width:10px; height:10px; border-radius:50%; background:#c9a84c; box-shadow:0 0 20px rgba(201,168,76,.6); z-index:3; }
+
+.live-section { background:var(--navy2); text-align:center; color:white; padding:96px 28px; }
+.live-section .section-sub { font-size:0.88rem; font-weight:300; color:var(--text-dim); margin-top:10px; }
+.live-card { max-width:520px; margin:52px auto 0; border:1px solid var(--gold-line); border-radius:4px; padding:52px 36px; position:relative; background:rgba(255,255,255,0.02); }
+.live-card::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:56px; height:1px; background:var(--gold); opacity:0.55; }
+.live-pulse { width:46px; height:46px; border-radius:50%; background:var(--gold-dim); border:1px solid var(--gold-line); display:flex; align-items:center; justify-content:center; margin:0 auto 22px; }
+.live-card h3 { font-family:'Playfair Display',serif; font-size:1.6rem; font-weight:400; margin-bottom:12px; }
+.live-card p { font-size:0.86rem; font-weight:300; color:var(--text-dim); line-height:1.9; }
+.live-btn { display:inline-flex; align-items:center; gap:10px; margin-top:30px; padding:13px 32px; border:1px solid var(--gold-line); border-radius:2px; color:var(--gold-soft); text-decoration:none; font-size:0.7rem; letter-spacing:3px; text-transform:uppercase; font-weight:400; transition:background 0.25s,color 0.25s; }
+.live-btn:hover { background:var(--gold-dim); color:white; }
+
+.countdown-section { background:var(--ink); text-align:center; color:white; padding:96px 28px; }
+.timer { display:flex; justify-content:center; gap:0; margin-top:52px; flex-wrap:wrap; }
+.t-unit { padding:0 28px; position:relative; }
+.t-unit + .t-unit::before { content:''; position:absolute; left:0; top:50%; transform:translateY(-60%); width:1px; height:36px; background:var(--gold-line); }
+.t-num { font-family:'Playfair Display',serif; font-size:clamp(2.8rem,8vw,4.8rem); font-weight:400; color:var(--white); line-height:1; display:block; }
+.t-lbl { display:block; margin-top:10px; font-size:0.6rem; letter-spacing:4px; text-transform:uppercase; color:var(--gold); font-weight:400; }
+
+footer { background:var(--ink); text-align:center; padding:72px 28px 52px; position:relative; }
+footer::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:1px; height:44px; background:linear-gradient(to bottom,var(--gold-line),transparent); }
+.footer-names { font-family:'Playfair Display',serif; font-size:clamp(2rem,6vw,3.6rem); font-weight:400; color:var(--white); letter-spacing:1px; }
+.footer-names em { font-style:italic; color:var(--gold-soft); }
+.footer-dates { margin-top:22px; display:flex; flex-direction:column; align-items:center; gap:5px; }
+.footer-date-row { font-size:0.6rem; letter-spacing:4px; text-transform:uppercase; color:rgba(255,255,255,0.26); font-weight:300; }
+
+.reveal { opacity:0; transform:translateY(28px); transition:opacity 0.9s ease,transform 0.9s ease; }
+.reveal.visible { opacity:1; transform:none; }
+.stagger > * { opacity:0; transform:translateY(22px); transition:opacity 0.7s ease,transform 0.7s ease; }
+.stagger.visible > *:nth-child(1) { opacity:1; transform:none; transition-delay:0s; }
+.stagger.visible > *:nth-child(2) { opacity:1; transform:none; transition-delay:0.1s; }
+.stagger.visible > *:nth-child(3) { opacity:1; transform:none; transition-delay:0.2s; }
+.stagger.visible > *:nth-child(4) { opacity:1; transform:none; transition-delay:0.3s; }
+
+@keyframes fadeUp { from { opacity:0; transform:translateY(44px); } to { opacity:1; transform:none; } }
+@keyframes bob { 0%,100% { transform:translateX(-50%) translateY(0); } 50% { transform:translateX(-50%) translateY(7px); } }
+
+/* ── RESPONSIVE ───────────────────────────────────────── */
+
+/* Large tablets & small desktops */
+@media (max-width:900px) {
+  .hero-names { font-size: clamp(3.5rem, 12vw, 6rem); }
+  .event-panel { height: 80vh; }
+  .event-panel-content { padding: 40px 32px; }
+  .event-panel.wedding .event-name { font-size: clamp(3rem, 10vw, 5rem); }
+  .live-card { padding: 44px 28px; }
+}
+
+/* Mobile */
+@media (max-width:600px) {
+  /* Hero - full image visible, no crop */
+  .hero { min-height: unset; justify-content: flex-end; display: block; position: relative; }
+  .hero-bg {
+    position: relative;
+    inset: unset;
+    width: 100%;
+    height: auto;
+    background: none !important;
+  }
+  .hero-bg::after { display: none; }
+  .hero-bg-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+  .hero-body {
+    position: relative;
+    z-index: 2;
+    padding: 0 20px 50px;
+    background: linear-gradient(to bottom, rgba(10,12,22,0.0) 0%, rgba(10,12,22,0.98) 18%, rgba(10,12,22,1) 100%);
+    margin-top: -100px;
+  }
+  .hero-scroll { display: none; }
+  .hero-names { font-size: clamp(3rem, 16vw, 5rem); line-height: 1; }
+  .hero-names .amp { font-size: 0.6em; }
+  .hero-rule { margin: 18px auto 16px; }
+  .hero-events { gap: 16px; margin-top: 14px; flex-wrap: nowrap; }
+  .hero-event { min-width: 100px; }
+  .hero-event-label { font-size: 0.55rem; letter-spacing: 3px; }
+  .hero-event-date { font-size: 0.62rem; }
+  .hero-event-city { font-size: 0.58rem; letter-spacing: 2px; }
+  .hero-events-divider { height: 50px; }
+
+  /* Story */
+  .story-section { padding: 70px 20px; }
+  .story-body { font-size: 0.92rem; line-height: 2; margin-top: 28px; }
+  .story-pullquote { font-size: clamp(1.1rem, 5vw, 1.5rem); margin-top: 36px; padding: 0 8px; }
+
+  /* Family */
+  .family-text { padding: 40px 20px 60px; }
+  .family-headline { font-size: clamp(1.4rem, 5vw, 1.9rem); }
+  .family-body { font-size: 0.88rem; }
+
+  /* Events - show full image, no crop */
+  .event-panel { height: auto; min-height: unset; display: block; }
+  .event-panel-img { position: relative; inset: unset; width: 100%; transform: none !important; will-change: auto; }
+  .event-panel-img img { 
+    width: 100%; 
+    height: auto; 
+    object-fit: contain; 
+    object-position: center center;
+    max-height: none;
+    transform: none !important;
+  }
+  .event-panel-overlay {
+    position: relative;
+    inset: unset;
+    background: linear-gradient(to bottom, rgba(10,12,22,0.0) 0%, rgba(10,12,22,0.97) 100%);
+    margin-top: -80px;
+    padding-top: 80px;
+  }
+  .event-panel-content { 
+    position: relative; 
+    z-index: 2; 
+    padding: 28px 20px 40px;
+    background: rgba(10,12,22,0.97);
+  }
+  .event-panel.haldi .event-panel-content { background: rgba(30,20,5,0.97); }
+
+  /* Family image - full visible */
+  .family-img-wrap img {
+    height: auto;
+    object-fit: contain;
+    filter: brightness(0.85) saturate(0.9);
+  }
+  .family-img-wrap::after { display: none; }
+  .event-name { font-size: clamp(2.4rem, 10vw, 3.5rem) !important; letter-spacing: -0.5px; margin-bottom: 10px; }
+  .event-tagline { font-size: 0.85rem; margin-bottom: 18px; }
+  .event-meta-row { font-size: 0.72rem !important; gap: 8px; letter-spacing: 1.5px !important; }
+  .event-venue { font-size: 0.68rem; margin-bottom: 20px; }
+  .event-link { font-size: 0.68rem; padding: 12px 18px; letter-spacing: 1px !important; }
+
+  /* Livestream */
+  .live-section { padding: 64px 20px; }
+  .live-card { padding: 36px 20px; margin-top: 36px; }
+  .live-card h3 { font-size: 1.3rem; }
+  .live-card p { font-size: 0.82rem; }
+  .live-btn { font-size: 0.65rem; padding: 12px 24px; letter-spacing: 2px; }
+
+  /* Countdown */
+  .countdown-section { padding: 64px 16px; }
+  .timer { gap: 0; margin-top: 36px; }
+  .t-unit { padding: 0 12px; }
+  .t-unit + .t-unit::before { height: 24px; }
+  .t-num { font-size: clamp(2rem, 10vw, 3.2rem); }
+  .t-lbl { font-size: 0.52rem; letter-spacing: 3px; margin-top: 8px; }
+
+  /* Footer */
+  footer { padding: 56px 20px 40px; }
+  .footer-names { font-size: clamp(1.6rem, 8vw, 2.8rem); }
+  .footer-date-row { font-size: 0.55rem; letter-spacing: 3px; text-align: center; }
+}
+
+/* Extra small phones */
+@media (max-width:380px) {
+  .hero-names { font-size: clamp(2.6rem, 18vw, 4rem); }
+  .hero-events { gap: 10px; }
+  .hero-event { min-width: 80px; }
+  .t-unit { padding: 0 8px; }
+  .t-num { font-size: clamp(1.8rem, 12vw, 2.8rem); }
+  .event-name { font-size: clamp(2rem, 12vw, 3rem) !important; }
+}
+
+@media (prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none !important; transition:none !important; } }
+</style>
+
+<!-- ════════════ HERO ════════════ -->
+<section class="hero">
+  <div class="hero-bg">
+    <img class="hero-bg-img" src="images/couple.jpg" alt="Srikanth and Kusuma">
+  </div>
+  <div class="hero-body">
+    <div class="hero-invite-line"></div>
+    <h1 class="hero-names">
+      Srikanth
+      <span class="amp">&amp;</span>
+      Kusuma
+    </h1>
+    <div class="hero-rule"></div>
+    <div class="hero-events">
+      <div class="hero-event">
+        <div class="hero-event-label">Haldi</div>
+        <div class="hero-event-date">Friday, 03 July 2026</div>
+        <div class="hero-event-city">Tiruvuru</div>
+      </div>
+      <div class="hero-events-divider"></div>
+      <div class="hero-event">
+        <div class="hero-event-label">Wedding</div>
+        <div class="hero-event-date">Friday, 03 July 2026</div>
+        <div class="hero-event-city">Kothagudem</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    scroll
+  </div>
+</section>
+
+<!-- ════════════ OUR STORY ════════════ -->
+<section class="story-section">
+  <div style="max-width:720px; margin:0 auto;">
+    <div class="reveal">
+      <span class="section-eye">Our Story</span>
+      <h2 class="section-title">Two Paths, One Destination</h2>
+    </div>
+    <p class="story-body reveal">
+      Different personalities, different interests, different perspectives.<br>
+      Yet the things that mattered most — our values, dreams, and outlook on life — felt surprisingly familiar.<br>
+      What followed were endless conversations, spontaneous moments, shared laughter, unforgettable memories,
+      and every emotion that comes with building a life together.<br>
+      Then came a question.<br>
+      She said yes.<br>
+      Our families said yes.<br>
+      <em>Today, we celebrate the beginning of a lifetime together.</em>
+    </p>
+    <p class="story-pullquote reveal">
+      "PS: we found each other."
+    </p>
+  </div>
+</section>
+
+<!-- ════════════ FAMILY INVITATION ════════════ -->
+<section class="family-section">
+  <div class="family-img-wrap reveal">
+    <img src="images/grouppic.jpg" alt="The Devisetti Family">
+  </div>
+  <div class="family-text reveal">
+    <span class="section-eye">DEVISETTI'S FAMILY</span>
+    <h2 class="family-headline">
+      A Celebration Of Love, Family &amp; Togetherness
+    </h2>
+    <p class="family-body">
+      With hearts full of joy, we warmly invite you to celebrate the wedding
+      as they embark on this beautiful journey together. We seek your blessings and good wishes
+      for a lifetime filled with love, happiness, and togetherness.<br>
+      We look forward to celebrating these cherished moments with you and your family.
+    </p>
+  </div>
+</section>
+
+<!-- ════════════ EVENTS ════════════ -->
+<section class="events-section">
+
+  <!-- HALDI -->
+  <div class="event-panel haldi">
+    <div class="event-panel-img"><img src="images/couple.jpg" alt="Haldi Ceremony"></div>
+    <div class="event-panel-overlay"></div>
+    <div class="timeline-dot"></div>
+    <div class="timeline-connector"></div>
+    <div class="event-panel-content">
+      <div class="event-accent"></div>
+      <h3 class="event-name">Haldi</h3>
+      <p class="event-tagline">A morning painted in turmeric, laughter, and family blessings.</p>
+      <div class="event-meta-row">
+        <span>03 July 2026</span>
+        <span class="event-divider"></span>
+        <span class="event-time">9:00 AM</span>
+      </div>
+      <div class="event-venue">Aryavysya Kalyanamandapam, Tiruvuru</div>
+      <a class="event-link" href="https://maps.app.goo.gl/dTAvUtqwEvbBWq677" target="_blank">
+        View on Map
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- WEDDING -->
+  <div class="event-panel wedding">
+    <div class="event-panel-img"><img src="images/wedding.jpg" alt="Wedding Ceremony"></div>
+    <div class="event-panel-overlay"></div>
+    <div class="timeline-dot"></div>
+    <div class="timeline-connector"></div>
+    <div class="event-panel-content">
+      <div class="event-accent"></div>
+      <h3 class="event-name">Wedding</h3>
+      <p class="event-tagline">Under sacred vows and timeless traditions, our forever begins.</p>
+      <div class="event-meta-row">
+        <span>03 July 2026</span>
+        <span class="event-divider"></span>
+        <span class="event-time">Muhurtham: 8:28 PM</span>
+      </div>
+      <div class="event-venue">Kothagudem Club, Near Bus Stand, Kothagudem</div>
+      <a class="event-link" href="https://maps.app.goo.gl/DNp446nN1R4r2WbZ7" target="_blank">
+        View on Map
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+
+</section>
+
+<!-- ════════════ LIVESTREAM ════════════ -->
+<section class="live-section">
+  <div style="max-width:960px; margin:0 auto;">
+    <div class="reveal">
+      <span class="section-eye">Joining Virtually?</span>
+      <h2 class="section-title">Live Stream</h2>
+      <p class="section-sub">For loved ones who cannot be with us in person</p>
+    </div>
+    <div class="live-card reveal">
+      <div class="live-pulse">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5">
+          <circle cx="12" cy="12" r="2"/>
+          <path d="M8.5 8.5a5 5 0 1 0 7.07 7.07"/>
+          <path d="M5.5 5.5a9 9 0 1 0 12.73 12.73"/>
+        </svg>
+      </div>
+      <h3>Watch Live</h3>
+      <p>Join us virtually as we celebrate — tap below to watch the live stream on 03 July 2026.</p>
+      <a class="live-btn" href="#" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+        Watch on YouTube
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ COUNTDOWN ════════════ -->
+<section class="countdown-section">
+  <div style="max-width:960px; margin:0 auto;">
+    <div class="reveal">
+      <span class="section-eye">The Big Day Is</span>
+      <h2 class="section-title">Counting Down</h2>
+    </div>
+    <div class="timer stagger" id="timer-row">
+      <div class="t-unit"><span class="t-num" id="cd-d">00</span><span class="t-lbl">Days</span></div>
+      <div class="t-unit"><span class="t-num" id="cd-h">00</span><span class="t-lbl">Hours</span></div>
+      <div class="t-unit"><span class="t-num" id="cd-m">00</span><span class="t-lbl">Minutes</span></div>
+      <div class="t-unit"><span class="t-num" id="cd-s">00</span><span class="t-lbl">Seconds</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ FOOTER ════════════ -->
+<footer>
+  <div class="footer-names">Srikanth <em>&amp;</em> Kusuma</div>
+  <div class="footer-dates">
+    <div class="footer-date-row">Friday · 03 July 2026 · Tiruvuru (Haldi)</div>
+    <div class="footer-date-row">Friday · 03 July 2026 · Kothagudem (Wedding)</div>
+  </div>
+</footer>
+
+<!-- ════════════ SCRIPTS ════════════ -->
+<script>
+const wedding = new Date("July 3, 2026 20:28:00").getTime();
+function pad(n){ return String(Math.max(0,n)).padStart(2,'0'); }
+function tick(){
+  const d = wedding - Date.now();
+  if(d <= 0){
+    document.getElementById('cd-d').textContent='00';
+    document.getElementById('cd-h').textContent='00';
+    document.getElementById('cd-m').textContent='00';
+    document.getElementById('cd-s').textContent='00';
+    return;
+  }
+  document.getElementById('cd-d').textContent = pad(Math.floor(d/864e5));
+  document.getElementById('cd-h').textContent = pad(Math.floor((d%864e5)/36e5));
+  document.getElementById('cd-m').textContent = pad(Math.floor((d%36e5)/6e4));
+  document.getElementById('cd-s').textContent = pad(Math.floor((d%6e4)/1e3));
+}
+setInterval(tick, 1000);
+tick();
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){ e.target.classList.add('visible'); observer.unobserve(e.target); }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal, .stagger').forEach(el => observer.observe(el));
+
+const panels = document.querySelectorAll('.event-panel');
+window.addEventListener('scroll', () => {
+  // only run parallax on non-mobile
+  if(window.innerWidth < 600) return;
+  panels.forEach(panel => {
+    const img = panel.querySelector('.event-panel-img');
+    if(!img) return;
+    const rect = panel.getBoundingClientRect();
+    const speed = rect.top * -0.08;
+    img.style.transform = `translateY(${speed}px)`;
+  });
+}, { passive: true });
+</script>
+</body>
+</html>
